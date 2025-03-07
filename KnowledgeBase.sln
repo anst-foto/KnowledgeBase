@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solotion Items", "Solotion 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Core", "KnowledgeBase.Core\KnowledgeBase.Core.csproj", "{41DBEB57-D144-4536-8B96-51C42262DC84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.WebAPI", "KnowledgeBase.WebAPI\KnowledgeBase.WebAPI.csproj", "{7B5CE959-238F-428F-BF0C-1AAF18119B5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,5 +25,9 @@ Global
 		{41DBEB57-D144-4536-8B96-51C42262DC84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41DBEB57-D144-4536-8B96-51C42262DC84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41DBEB57-D144-4536-8B96-51C42262DC84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B5CE959-238F-428F-BF0C-1AAF18119B5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B5CE959-238F-428F-BF0C-1AAF18119B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B5CE959-238F-428F-BF0C-1AAF18119B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B5CE959-238F-428F-BF0C-1AAF18119B5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
