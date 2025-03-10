@@ -1,3 +1,5 @@
+using KnowledgeBase.Model;
+
 namespace KnowledgeBase.Core;
 
 public interface IService
