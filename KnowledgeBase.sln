@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -11,6 +11,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Core", "KnowledgeBase.Core\KnowledgeBase.Core.csproj", "{41DBEB57-D144-4536-8B96-51C42262DC84}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.WebAPI", "KnowledgeBase.WebAPI\KnowledgeBase.WebAPI.csproj", "{7B5CE959-238F-428F-BF0C-1AAF18119B5E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Model", "KnowledgeBase.Model\KnowledgeBase.Model.csproj", "{BF3A8D77-89EB-401A-9070-12C55B40AE31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,5 +30,9 @@ Global
 		{7B5CE959-238F-428F-BF0C-1AAF18119B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B5CE959-238F-428F-BF0C-1AAF18119B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B5CE959-238F-428F-BF0C-1AAF18119B5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF3A8D77-89EB-401A-9070-12C55B40AE31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF3A8D77-89EB-401A-9070-12C55B40AE31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF3A8D77-89EB-401A-9070-12C55B40AE31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF3A8D77-89EB-401A-9070-12C55B40AE31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
