@@ -1,4 +1,4 @@
-namespace KnowledgeBase.Core;
+namespace KnowledgeBase.Model;
 
 public class Article
 {
