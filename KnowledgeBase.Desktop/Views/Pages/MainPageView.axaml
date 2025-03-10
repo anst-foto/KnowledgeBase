@@ -1,0 +1,29 @@
+﻿<ext:Page xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ext="using:Avalonia.Extension"
+             xmlns:model="using:KnowledgeBase.Model"
+             xmlns:vm="using:KnowledgeBase.Desktop.ViewModels"
+             
+             x:Class="KnowledgeBase.Desktop.Views.MainPageView"
+             x:DataType="vm:MainPageViewModel">
+    <ext:Page.DataContext>
+        <vm:MainPageViewModel/>
+    </ext:Page.DataContext>
+    
+    <ext:Page.Resources>
+        <DataTemplate x:Key="TemplateCards"
+                      x:DataType="{x:Type model:Article}">
+            <ext:Card Title="{Binding Title}"
+                      Tags="{Binding Tags}"
+                      Command="{Binding $parent[ext:Page].((vm:MainPageViewModel)DataContext).OpenCommand}"/>
+        </DataTemplate>
+        
+        <ItemsPanelTemplate x:Key="TemplatePanelCards">
+            <WrapPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+    </ext:Page.Resources>
+    
+    <ListBox ItemsSource="{Binding Articles}"
+             ItemTemplate="{StaticResource TemplateCards}"
+             ItemsPanel="{StaticResource TemplatePanelCards}"/>
+</ext:Page>
