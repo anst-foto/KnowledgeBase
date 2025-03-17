@@ -10,4 +10,8 @@
       <ProjectReference Include="..\KnowledgeBase.Model\KnowledgeBase.Model.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="MongoDB.Driver" Version="3.2.1" />
+    </ItemGroup>
+
 </Project>
