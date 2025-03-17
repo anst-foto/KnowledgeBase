@@ -31,7 +31,7 @@ public class Service : IService
     public void Update(Article article) => 
         _collection.ReplaceOne(a => a.Id == article.Id, article);
 
-    public void Delete(Guid id) => 
+    public void Delete(ObjectId id) => 
         _collection.DeleteOne(a => a.Id == id);
 
     public IEnumerable<Article> GetAll() => 
@@ -39,7 +39,7 @@ public class Service : IService
             .Find(new BsonDocument())
             .ToList();
 
-    public Article? GetBy(Guid id) => 
+    public Article? GetBy(ObjectId id) => 
         _collection
             .Find(a => a.Id == id)
             .SingleOrDefault();
