@@ -7,9 +7,12 @@ namespace KnowledgeBase.Core.Test;
 public class ServiceTest
 {
     private readonly IService _service;
+    
+    private readonly Article _article;
 
     public ServiceTest()
     {
+        //TODO Выделить в отдельный файл
         var config = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json")
@@ -19,28 +22,47 @@ public class ServiceTest
         var collectionName = config.GetConnectionString("CollectionName");
         
         _service = new Service(new ConnectConfig(connectionString, databaseName, collectionName));
-    }
-    
-    [Fact]
-    public void GetAllTest()
-    {
-        var article = new Article()
+        
+        _article = new Article()
         {
-            Id = new ObjectId("67d854d78fd13a37e0cff708"),
             Title = "MongoDB",
             Content = "MongoDB is a document database",
             DateOfCreation = new(year: 2025, month: 3, day: 17),
             DateOfLastUpdate = new(year: 2025, month: 3, day: 17)
         };
-        article.Tags.Add("mongodb");
-        article.Tags.Add("database");
-        article.Tags.Add("NoSQL");
-        var expectedArticles = new List<Article> { article };
+        _article.Tags.Add("mongodb");
+        _article.Tags.Add("database");
+        _article.Tags.Add("NoSQL");
+    }
+    
+    [Fact]
+    public void GetAllTest()
+    {
+        var expectedArticles = new List<Article> { _article };
         
         var actualArticles = _service.GetAll().ToList();
         
         Assert.Multiple(
             () => Assert.NotEmpty(actualArticles),
             () => Assert.Equal(expectedArticles, actualArticles));
+    }
+
+    [Fact]
+    public void GetByIdTest()
+    {
+        var actualArticle = _service.GetBy(new ObjectId("67d854d78fd13a37e0cff708")); //FIXME Уйти от магических чисел
+        Assert.Multiple(
+            () => Assert.NotNull(actualArticle),
+            () => Assert.Equal(_article, actualArticle));
+    }
+
+    [Fact]
+    public void CreateTest()
+    {
+        _service.Create(_article);
+        var actualArticles = _service.GetAll();
+        Assert.Equal(2, actualArticles.Count()); //FIXME Уйти от магических чисел
+        
+        _service.Delete(actualArticles.Last().Id);
     }
 }
