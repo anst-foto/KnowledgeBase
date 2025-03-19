@@ -1,4 +1,8 @@
-﻿namespace KnowledgeBase.Model;
+﻿using System;
+using System.Linq;
+
+
+namespace KnowledgeBase.Model;
 
 public partial class Article : IEquatable<Article>
 {
