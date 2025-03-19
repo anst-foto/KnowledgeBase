@@ -6,6 +6,15 @@ namespace KnowledgeBase.Model;
 
 public partial class Article : IEquatable<Article>
 {
+    /// <summary>
+    /// Метод сравнения двух объектов Article
+    /// </summary>
+    /// <param name="other">
+    /// Объект, с которым происходит сравнение
+    ///</param>
+    /// <returns>
+    /// true, если объекты равны; false, если объекты не равны
+    /// </returns>
     public bool Equals(Article? other)
     {
         if (other is null) return false;
