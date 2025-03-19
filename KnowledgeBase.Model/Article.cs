@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace KnowledgeBase.Model;
 
-public record Article
+public partial class Article
 {
     [BsonId]
     public ObjectId Id { get; init; }
