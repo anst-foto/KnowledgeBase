@@ -1,4 +1,6 @@
-﻿# База знаний
+﻿[![CodeFactor](https://www.codefactor.io/repository/github/anst-foto/knowledgebase/badge)](https://www.codefactor.io/repository/github/anst-foto/knowledgebase)
+
+# База знаний
 
 ## Модель данных
 
