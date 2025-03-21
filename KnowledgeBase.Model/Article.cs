@@ -10,6 +10,9 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace KnowledgeBase.Model;
 
+/// <summary>
+/// Статья
+/// </summary>
 public sealed partial class Article
 {
     /// <summary>
@@ -51,7 +54,7 @@ public sealed partial class Article
     
     
     /// <summary>
-    /// Признак что статья удалена или нет
+    /// Признак, что статья удалена или нет
     /// </summary>
     [BsonElement("is_deleted")]
     public bool IsDeleted { get; set; } = false;

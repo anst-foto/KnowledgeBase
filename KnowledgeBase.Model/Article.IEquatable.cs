@@ -47,7 +47,7 @@ public partial class Article : IEquatable<Article>
     {
         return Equals(left, right);
     }
-
+    
     public static bool operator !=(Article? left, Article? right)
     {
         return !Equals(left, right);

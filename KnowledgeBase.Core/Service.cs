@@ -21,6 +21,9 @@ namespace KnowledgeBase.Core;
 /// <param name="CollectionName">Имя коллекции</param>
 public record ConnectConfig(string ConnectionString, string DatabaseName, string CollectionName);
 
+/// <summary>
+/// Сервис
+/// </summary>
 public class Service : IService, IDisposable
 {
     /// <summary>
@@ -122,6 +125,9 @@ public class Service : IService, IDisposable
             .Find(a => a.Tags.Any(tags.Contains))
             .ToList();
 
+    /// <summary>
+    /// Освободить ресурсы
+    /// </summary>
     public void Dispose()
     {
         _client.Dispose();
