@@ -1,6 +1,7 @@
 // This is a personal academic project. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -39,8 +40,8 @@ public class ServiceTest
         {
             Title = "MongoDB",
             Content = "MongoDB is a document database",
-            DateOfCreation = new(year: 2025, month: 3, day: 17),
-            DateOfLastUpdate = new(year: 2025, month: 3, day: 17)
+            DateOfCreation = new(year: 2025, month: 3, day: 17, hour: 12, minute: 30, second: 30, DateTimeKind.Utc),
+            DateOfLastUpdate = new(year: 2025, month: 3, day: 17, hour: 12, minute: 30, second: 30, DateTimeKind.Utc)
         };
         _article.Tags.Add("mongodb");
         _article.Tags.Add("database");
