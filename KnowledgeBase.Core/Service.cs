@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using MongoDB.Bson;
@@ -17,10 +21,7 @@ namespace KnowledgeBase.Core;
 /// <param name="CollectionName">Имя коллекции</param>
 public record ConnectConfig(string ConnectionString, string DatabaseName, string CollectionName);
 
-/// <summary>
-/// Сервис для работы с базой данных MongoDB
-/// </summary>
-public class Service : IService
+public class Service : IService, IDisposable
 {
     /// <summary>
     /// Конфигурация подключения к базе данных
@@ -42,10 +43,7 @@ public class Service : IService
     /// </summary>
     private string CollectionName => _config.CollectionName;
     
-    /// <summary>
-    /// Коллекция
-    /// </summary>
-    private readonly IMongoCollection<Article> _collection;
+    private readonly IMongoClient _client;
     
     /// <summary>
     /// Инициализация сервиса
@@ -55,9 +53,7 @@ public class Service : IService
     {
         _config = config;
 
-        var client = new MongoClient(ConnectionString);
-        var db = client.GetDatabase(DatabaseName);
-        _collection = db.GetCollection<Article>(CollectionName);
+        _client = new MongoClient(ConnectionString);
     }
     
     /// <summary>
@@ -65,28 +61,40 @@ public class Service : IService
     /// </summary>
     /// <param name="article">Cтатья</param>
     public void Create(Article article) => 
-        _collection.InsertOne(article);
+        _client
+            .GetDatabase(DatabaseName)
+            .GetCollection<Article>(CollectionName)
+            .InsertOne(article);
+        
 
     /// <summary>
     /// Обновить статью
     /// </summary>
     /// <param name="article">Cтатья</param>
     public void Update(Article article) => 
-        _collection.ReplaceOne(a => a.Id == article.Id, article);
+        _client
+            .GetDatabase(DatabaseName)
+            .GetCollection<Article>(CollectionName)
+            .ReplaceOne(a => a.Id == article.Id, article);
 
     /// <summary>
     /// Удалить статью
     /// </summary>
     /// <param name="id">Идентификатор статьи</param>
     public void Delete(ObjectId id) => 
-        _collection.DeleteOne(a => a.Id == id);
+        _client
+            .GetDatabase(DatabaseName)
+            .GetCollection<Article>(CollectionName)
+            .DeleteOne(a => a.Id == id);
 
     /// <summary>
     /// Получить все статьи
     /// </summary>
     /// <returns>Список статей</returns>
     public IEnumerable<Article> GetAll() => 
-        _collection
+        _client
+            .GetDatabase(DatabaseName)
+            .GetCollection<Article>(CollectionName)
             .Find(new BsonDocument())
             .ToList();
 
@@ -96,7 +104,9 @@ public class Service : IService
     /// <param name="id">Идентификатор статьи</param>
     /// <returns>Статья</returns>
     public Article? GetBy(ObjectId id) => 
-        _collection
+        _client
+            .GetDatabase(DatabaseName)
+            .GetCollection<Article>(CollectionName)
             .Find(a => a.Id == id)
             .SingleOrDefault();
 
@@ -106,7 +116,14 @@ public class Service : IService
     /// <param name="tags">Список тегов</param>
     /// <returns>Список статей</returns>
     public IEnumerable<Article>? GetBy(IEnumerable<string> tags) => 
-        _collection
+        _client
+            .GetDatabase(DatabaseName)
+            .GetCollection<Article>(CollectionName)
             .Find(a => a.Tags.Any(tags.Contains))
             .ToList();
+
+    public void Dispose()
+    {
+        _client.Dispose();
+    }
 }
