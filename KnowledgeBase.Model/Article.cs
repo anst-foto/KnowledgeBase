@@ -1,3 +1,6 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
 using System;
 using System.Collections.Generic;
 
@@ -7,7 +10,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace KnowledgeBase.Model;
 
-public partial class Article
+public sealed partial class Article
 {
     [BsonId]
     public ObjectId Id { get; init; }
