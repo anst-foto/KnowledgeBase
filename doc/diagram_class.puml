@@ -1,0 +1,27 @@
+﻿@startuml
+'https://plantuml.com/class-diagram
+
+class Article
+{
+    + Id : Guid
+    + Title : string
+    + Tags : string[]
+    + Content : string
+    + DateOfCreation : DateTime
+    + DateOfLastUpdate : DateTime
+    + IsDeleted : bool
+}
+
+Article <--o IService
+interface IService
+{
+    + Create(article : Article) : void
+    + Update(article : Article) : void
+    + Delete(id : Guid);
+    + GetAll() : Article[]
+    + GetBy(id : Guid) : Article
+    + GetBy(tags : string[]) : Article[]
+}
+
+
+@enduml
