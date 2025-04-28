@@ -1,9 +1,8 @@
 // This is a personal academic project. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
 
+using System;
 using System.Collections.Generic;
-
-using MongoDB.Bson;
 
 using KnowledgeBase.Model;
 
@@ -31,7 +30,7 @@ public interface IService
     /// Удалить статью
     /// </summary>
     /// <param name="id">Идентификатор статьи</param>
-    public void Delete(ObjectId id);
+    public void Delete(Guid id);
     
     /// <summary>
     /// Получить все статьи
@@ -44,7 +43,7 @@ public interface IService
     /// </summary>
     /// <param name="id">Идентификатор статьи</param>
     /// <returns>Статья</returns>
-    public Article? GetBy(ObjectId id);
+    public Article? GetBy(Guid id);
     
     /// <summary>
     /// Получить статьи по тегам

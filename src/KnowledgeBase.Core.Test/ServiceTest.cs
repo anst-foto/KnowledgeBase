@@ -8,8 +8,6 @@ using System.Linq;
 
 using Microsoft.Extensions.Configuration;
 
-using MongoDB.Bson;
-
 using Xunit;
 
 using KnowledgeBase.Model;
@@ -40,8 +38,8 @@ public class ServiceTest
         {
             Title = "MongoDB",
             Content = "MongoDB is a document database",
-            DateOfCreation = new(year: 2025, month: 3, day: 17, hour: 12, minute: 30, second: 30, DateTimeKind.Utc),
-            DateOfLastUpdate = new(year: 2025, month: 3, day: 17, hour: 12, minute: 30, second: 30, DateTimeKind.Utc)
+            DateOfCreation = new DateTime(year: 2025, month: 3, day: 17, hour: 12, minute: 30, second: 30, DateTimeKind.Utc),
+            DateOfLastUpdate = new DateTime(year: 2025, month: 3, day: 17, hour: 12, minute: 30, second: 30, DateTimeKind.Utc)
         };
         _article.Tags.Add("mongodb");
         _article.Tags.Add("database");
@@ -63,7 +61,7 @@ public class ServiceTest
     [Fact]
     public void GetByIdTest()
     {
-        var actualArticle = _service.GetBy(new ObjectId("67d854d78fd13a37e0cff708")); //FIXME Уйти от магических чисел
+        var actualArticle = _service.GetBy(new Guid("67d854d78fd13a37e0cff708")); //FIXME Уйти от магических чисел
         Assert.Multiple(
             () => Assert.NotNull(actualArticle),
             () => Assert.Equal(_article, actualArticle));

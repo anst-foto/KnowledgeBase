@@ -84,7 +84,7 @@ public class Service : IService, IDisposable
     /// Удалить статью
     /// </summary>
     /// <param name="id">Идентификатор статьи</param>
-    public void Delete(ObjectId id) => 
+    public void Delete(Guid id) => 
         _client
             .GetDatabase(DatabaseName)
             .GetCollection<Article>(CollectionName)
@@ -106,7 +106,7 @@ public class Service : IService, IDisposable
     /// </summary>
     /// <param name="id">Идентификатор статьи</param>
     /// <returns>Статья</returns>
-    public Article? GetBy(ObjectId id) => 
+    public Article? GetBy(Guid id) => 
         _client
             .GetDatabase(DatabaseName)
             .GetCollection<Article>(CollectionName)
