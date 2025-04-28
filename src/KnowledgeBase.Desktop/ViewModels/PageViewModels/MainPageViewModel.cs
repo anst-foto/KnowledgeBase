@@ -17,7 +17,7 @@ public class MainPageViewModel : PageViewModelBase
 
         var article = new Article()
         {
-            Id = Guid.NewGuid(),
+            Id = Guid.NewGuid(),//BUG Решить какой тип данных использовать для уникального идентификатора
             Title = "Статья 1",
             Content = "Контент статьи 1"
         };

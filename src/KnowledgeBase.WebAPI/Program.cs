@@ -1,5 +1,9 @@
+using System;
+using System.Linq;
 using KnowledgeBase.Core;
 using KnowledgeBase.Model;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
@@ -7,7 +11,7 @@ app.UseHttpsRedirection();
 
 IService service;
 
-const string BASE_URL = "/api/v0";
+const string BASE_URL = "/api/v0"; //BUG Используйте механизм группирования API
 
 app.MapGet($"{BASE_URL}/articles", () => service.GetAll());
 app.MapGet($"{BASE_URL}/articles/{{id:guid}}", (Guid id) => service.GetBy(id));

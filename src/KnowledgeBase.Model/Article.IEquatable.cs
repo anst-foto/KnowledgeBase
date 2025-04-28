@@ -30,6 +30,11 @@ public partial class Article : IEquatable<Article>
                && IsDeleted == other.IsDeleted;
     }
 
+    /// <summary>
+    /// Переопределение метода Equals() для класса
+    /// </summary>
+    /// <param name="obj">Объект, с которым происходит сравнение</param>
+    /// <returns>Результат сравнения</returns>
     public override bool Equals(object? obj)
     {
         if (obj is null) return false;
@@ -38,16 +43,32 @@ public partial class Article : IEquatable<Article>
         return Equals((Article)obj);
     }
 
+    /// <summary>
+    /// Вычисление хеш-кода объекта
+    /// </summary>
+    /// <returns>Хеш-код объекта</returns>
     public override int GetHashCode()
     {
         return HashCode.Combine(Title, Tags, Content, DateOfCreation, DateOfLastUpdate, IsDeleted);
     }
 
+    /// <summary>
+    /// Сравнение объектов класса Article на равенство
+    /// </summary>
+    /// <param name="left">Левый объект</param>
+    /// <param name="right">Правый объект</param>
+    /// <returns>Результат сравнения</returns>
     public static bool operator ==(Article? left, Article? right)
     {
         return Equals(left, right);
     }
     
+    /// <summary>
+    /// Сравнение объектов класса Article на неравенство
+    /// </summary>
+    /// <param name="left">Левый объект</param>
+    /// <param name="right">Правый объект</param>
+    /// <returns>Результат сравнения</returns>
     public static bool operator !=(Article? left, Article? right)
     {
         return !Equals(left, right);
