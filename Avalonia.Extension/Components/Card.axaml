@@ -1,0 +1,20 @@
+﻿<local:Component xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Avalonia.Extension"
+             
+             x:Class="Avalonia.Extension.Card"
+             x:Name="Component">
+    <Border Width="200">
+        <Grid RowDefinitions="*, *, *">
+            <TextBlock Text="{Binding ElementName=Component, Path=Title}"
+                       Grid.Row="0"/>
+            
+            <ItemsControl ItemsSource="{Binding ElementName=Component, Path=Tags}"
+                          Grid.Row="1"/>
+            
+            <Button Content="Открыть"
+                    Command="{Binding ElementName=Component, Path=Command}"
+                    Grid.Row="2"/>
+        </Grid>
+    </Border>
+</local:Component>

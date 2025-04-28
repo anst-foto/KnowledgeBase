@@ -13,6 +13,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.WebAPI", "KnowledgeBase.WebAPI\KnowledgeBase.WebAPI.csproj", "{7B5CE959-238F-428F-BF0C-1AAF18119B5E}"
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Model", "KnowledgeBase.Model\KnowledgeBase.Model.csproj", "{BF3A8D77-89EB-401A-9070-12C55B40AE31}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{7CE33A0D-53A6-4634-9D18-F6831A2901C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Extension", "Avalonia.Extension\Avalonia.Extension.csproj", "{442D5F35-1B69-4780-A9BB-79062AA03DD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Desktop", "KnowledgeBase.Desktop\KnowledgeBase.Desktop.csproj", "{35028203-3088-43B7-8249-DB7E2FE77759}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Core.Test", "KnowledgeBase.Core.Test\KnowledgeBase.Core.Test.csproj", "{98800D0E-BB78-4FEB-9659-A7D03FFFF39B}"
 EndProject
 Global
@@ -36,9 +42,21 @@ Global
 		{BF3A8D77-89EB-401A-9070-12C55B40AE31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF3A8D77-89EB-401A-9070-12C55B40AE31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF3A8D77-89EB-401A-9070-12C55B40AE31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{442D5F35-1B69-4780-A9BB-79062AA03DD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{442D5F35-1B69-4780-A9BB-79062AA03DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{442D5F35-1B69-4780-A9BB-79062AA03DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{442D5F35-1B69-4780-A9BB-79062AA03DD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35028203-3088-43B7-8249-DB7E2FE77759}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35028203-3088-43B7-8249-DB7E2FE77759}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35028203-3088-43B7-8249-DB7E2FE77759}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35028203-3088-43B7-8249-DB7E2FE77759}.Release|Any CPU.Build.0 = Release|Any CPU
 		{98800D0E-BB78-4FEB-9659-A7D03FFFF39B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{98800D0E-BB78-4FEB-9659-A7D03FFFF39B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98800D0E-BB78-4FEB-9659-A7D03FFFF39B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98800D0E-BB78-4FEB-9659-A7D03FFFF39B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{442D5F35-1B69-4780-A9BB-79062AA03DD2} = {7CE33A0D-53A6-4634-9D18-F6831A2901C5}
+		{35028203-3088-43B7-8249-DB7E2FE77759} = {7CE33A0D-53A6-4634-9D18-F6831A2901C5}
 	EndGlobalSection
 EndGlobal
