@@ -3,7 +3,8 @@
 
 using System;
 using System.Collections.Generic;
-
+using System.Threading;
+using System.Threading.Tasks;
 using KnowledgeBase.Model;
 
 
@@ -18,37 +19,43 @@ public interface IService
     /// Создать статью
     /// </summary>
     /// <param name="article">Статья</param>
-    public void Create(Article article);
-    
+    /// <param name="cancellationToken">Токен отмены</param>
+    public Task CreateAsync(Article article, CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Обновить статью
     /// </summary>
     /// <param name="article">Cтатья</param>
-    public void Update(Article article);
-    
+    /// <param name="cancellationToken">Токен отмены</param>
+    public Task UpdateAsync(Article article, CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Удалить статью
     /// </summary>
     /// <param name="id">Идентификатор статьи</param>
-    public void Delete(Guid id);
+    /// <param name="cancellationToken">Токен отмены</param>
+    public Task DeleteAsync(Guid id, CancellationToken cancellationToken = default);
     
     /// <summary>
     /// Получить все статьи
     /// </summary>
+    /// <param name="cancellationToken">Токен отмены</param>
     /// <returns>Список статей</returns>
-    public IEnumerable<Article> GetAll();
+    public IAsyncEnumerable<Article>? GetAllAsync(CancellationToken cancellationToken = default);
     
     /// <summary>
     /// Получить статью по идентификатору
     /// </summary>
     /// <param name="id">Идентификатор статьи</param>
+    /// <param name="cancellationToken">Токен отмены</param>
     /// <returns>Статья</returns>
-    public Article? GetBy(Guid id);
+    public Task<Article?> GetByAsync(Guid id, CancellationToken cancellationToken = default);
     
     /// <summary>
     /// Получить статьи по тегам
     /// </summary>
     /// <param name="tags">Список тегов</param>
+    /// <param name="cancellationToken">Токен отмены</param>
     /// <returns>Список статей</returns>
-    public IEnumerable<Article>? GetBy(IEnumerable<string> tags);
+    public IAsyncEnumerable<Article>? GetByAsync(IEnumerable<string> tags, CancellationToken cancellationToken = default);
 }
