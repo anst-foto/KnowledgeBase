@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Reactive;
+using System.Threading.Tasks;
 using KnowledgeBase.Model;
 using ReactiveUI;
 
@@ -8,6 +11,8 @@ namespace KnowledgeBase.Desktop.ViewModels;
 
 public class MainPageViewModel : PageViewModelBase
 {
+    private static HttpClient _httpClient = new();
+    
     public ObservableCollection<Article> Articles { get; } = [];
     public ReactiveCommand<Unit, Unit> OpenCommand { get; }
 
@@ -15,16 +20,11 @@ public class MainPageViewModel : PageViewModelBase
     {
         Title = "База знаний";
 
-        var article = new Article
+        var articles = _httpClient.GetFromJsonAsAsyncEnumerable<Article>("http://localhost:5196/api/v1/articles");
+        foreach (var article in articles.ToBlockingEnumerable())
         {
-            Id = Guid.NewGuid(), //BUG Решить какой тип данных использовать для уникального идентификатора
-            Title = "Статья 1",
-            Content = "Контент статьи 1"
-        };
-        article.Tags.Add("тег 1");
-        article.Tags.Add("тег 2");
-        Articles.Add(article);
-        Articles.Add(article);
+            Articles.Add(article);
+        }
 
         OpenCommand = ReactiveCommand.Create(() => { });
     }

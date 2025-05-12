@@ -1,0 +1,104 @@
+# =========================
+# Version control
+# =========================
+.git/
+.gitignore
+.svn/
+.hg/
+
+# =========================
+# IDE and editor files
+# =========================
+.idea/
+.vscode/
+*.swp
+*.swo
+*.DotSettings
+*.DotSettings.user
+
+# =========================
+# Build outputs (C#)
+# =========================
+**/bin/
+**/obj/
+
+# =========================
+# Build outputs (other languages)
+# =========================
+dist/
+build/
+out/
+
+# =========================
+# Test and debug artifacts
+# =========================
+test/
+tests/
+debug/
+*.log
+
+# =========================
+# Environment and secrets
+# =========================
+.env*
+*.env
+*.pem
+*.key
+*.crt
+config.local.*
+*.local.yml
+.local/
+
+# =========================
+# Temporary and cache files
+# =========================
+tmp/
+temp/
+*.tmp
+
+# =========================
+# Documentation
+# =========================
+docs/
+*.md
+README*
+
+# =========================
+# Docker and Compose files (except Dockerfile in service dirs)
+# =========================
+Dockerfile*
+docker-compose*
+compose.yaml
+.dockerignore
+
+# =========================
+# Project-specific: MongoDB data and container artifacts
+# =========================
+.container/
+
+# =========================
+# Language-specific (not detected, but for completeness)
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+node_modules/
+npm-debug.log
+yarn-debug.log
+/vendor/
+*.test
+.go-cache/
+target/
+*.class
+.gradle/
+
+# =========================
+# Exclusions: Keep .lock files and .csproj, .sln, .json, .axaml, .wt, .cs files
+# =========================
+# (No explicit exclusion needed as patterns above do not match these)
+
+# =========================
+# End of .dockerignore
+# =========================

@@ -1,0 +1,44 @@
+networks:
+  mongo_backend_network:
+    driver: bridge
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    networks:
+      - mongo_backend_network
+    volumes:
+      - ./.container/mongodb:/data/db
+        
+  webapi:
+    build:
+      context: ./KnowledgeBase.WebAPI
+      dockerfile: Dockerfile
+    container_name: knowledgebase-webapi
+    restart: unless-stopped
+    init: true
+    networks:
+      - mongo_backend_network
+    ports:
+      - "8080:8080"  # Expose WebAPI on host port 8080
+    # env_file: ./KnowledgeBase.WebAPI/.env  # Uncomment if .env file exists
+    depends_on:
+      - mongo  # WebAPI depends on MongoDB
+
+  desktop:
+    build:
+      context: ./KnowledgeBase.Desktop
+      dockerfile: Dockerfile
+    container_name: knowledgebase-desktop
+    restart: unless-stopped
+    init: true
+    networks:
+      - mongo_backend_network
+    depends_on:
+      - webapi  # Desktop app depends on WebAPI
+    # env_file: ./KnowledgeBase.Desktop/.env  # Uncomment if .env file exists
+    # Note: No ports exposed; this is a GUI app and may require X11 forwarding for UI access

@@ -8,7 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "outhers", "outhers", "{D5A8
 		..\.gitignore = ..\.gitignore
 		..\README.md = ..\README.md
 		..\.github\workflows\SonarQube.yml = ..\.github\workflows\SonarQube.yml
-		docker-compose.yml = docker-compose.yml
+		compose.yaml = compose.yaml
+		.dockerignore = .dockerignore
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{7CE33A0D-53A6-4634-9D18-F6831A2901C5}"
