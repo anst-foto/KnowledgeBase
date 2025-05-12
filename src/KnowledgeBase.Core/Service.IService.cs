@@ -9,7 +9,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
-
 using KnowledgeBase.Model;
 
 
@@ -25,14 +24,16 @@ public partial class Service : IService
     /// </summary>
     /// <param name="article">Cтатья</param>
     /// <param name="cancellationToken">Токен отмены</param>
-    public async Task CreateAsync(Article article, CancellationToken cancellationToken = default) => 
+    public async Task CreateAsync(Article article, CancellationToken cancellationToken = default)
+    {
         await _client
             .GetDatabase(DatabaseName)
             .GetCollection<Article>(CollectionName)
             .InsertOneAsync(
-                document: article, 
-                options: null,
-                cancellationToken: cancellationToken);
+                article,
+                null,
+                cancellationToken);
+    }
 
 
     /// <summary>
@@ -40,50 +41,51 @@ public partial class Service : IService
     /// </summary>
     /// <param name="article">Cтатья</param>
     /// <param name="cancellationToken">Токен отмены</param>
-    public async Task UpdateAsync(Article article, CancellationToken cancellationToken = default) => 
+    public async Task UpdateAsync(Article article, CancellationToken cancellationToken = default)
+    {
         await _client
             .GetDatabase(DatabaseName)
             .GetCollection<Article>(CollectionName)
             .ReplaceOneAsync(
-                filter: a => a.Id == article.Id,
-                replacement: article,
+                a => a.Id == article.Id,
+                article,
                 cancellationToken: cancellationToken);
+    }
 
     /// <summary>
     /// Удалить статью
     /// </summary>
     /// <param name="id">Идентификатор статьи</param>
     /// <param name="cancellationToken">Токен отмены</param>
-    public async Task DeleteAsync(Guid id, CancellationToken cancellationToken = default) => 
+    public async Task DeleteAsync(Guid id, CancellationToken cancellationToken = default)
+    {
         await _client
             .GetDatabase(DatabaseName)
             .GetCollection<Article>(CollectionName)
             .DeleteOneAsync(
-                filter: a => a.Id == id,
-                cancellationToken: cancellationToken);
+                a => a.Id == id,
+                cancellationToken);
+    }
 
     /// <summary>
     /// Получить все статьи
     /// </summary>
     /// <param name="cancellationToken">Токен отмены</param>
     /// <returns>Список статей</returns>
-    public async IAsyncEnumerable<Article> GetAllAsync([EnumeratorCancellation] CancellationToken cancellationToken = default)
+    public async IAsyncEnumerable<Article> GetAllAsync(
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var cursor = await _client
             .GetDatabase(DatabaseName)
             .GetCollection<Article>(CollectionName)
             .FindAsync(
-                filter: new BsonDocument(),
+                new BsonDocument(),
                 cancellationToken: cancellationToken);
         while (await cursor.MoveNextAsync(cancellationToken))
-        {
             foreach (var current in cursor.Current)
-            {
                 yield return current;
-            }
-        }
-    } 
-    
+    }
+
     /// <summary>
     /// Получить статью по идентификатору
     /// </summary>
@@ -96,7 +98,7 @@ public partial class Service : IService
             .GetDatabase(DatabaseName)
             .GetCollection<Article>(CollectionName)
             .FindAsync(
-                filter:a => a.Id == id, 
+                a => a.Id == id,
                 cancellationToken: cancellationToken);
         return await cursor.SingleOrDefaultAsync(cancellationToken);
     }
@@ -107,20 +109,17 @@ public partial class Service : IService
     /// <param name="tags">Список тегов</param>
     /// <param name="cancellationToken">Токен отмены</param>
     /// <returns>Список статей</returns>
-    public async IAsyncEnumerable<Article>? GetByAsync(IEnumerable<string> tags, [EnumeratorCancellation] CancellationToken cancellationToken = default)
+    public async IAsyncEnumerable<Article>? GetByAsync(IEnumerable<string> tags,
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var cursor = await _client
             .GetDatabase(DatabaseName)
             .GetCollection<Article>(CollectionName)
             .FindAsync(
-                filter: a => a.Tags.Any(tags.Contains),
+                a => a.Tags.Any(tags.Contains),
                 cancellationToken: cancellationToken);
         while (await cursor.MoveNextAsync(cancellationToken))
-        {
             foreach (var current in cursor.Current)
-            {
                 yield return current;
-            }
-        }
     }
 }

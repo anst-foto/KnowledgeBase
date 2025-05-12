@@ -35,14 +35,14 @@ public interface IService
     /// <param name="id">Идентификатор статьи</param>
     /// <param name="cancellationToken">Токен отмены</param>
     public Task DeleteAsync(Guid id, CancellationToken cancellationToken = default);
-    
+
     /// <summary>
     /// Получить все статьи
     /// </summary>
     /// <param name="cancellationToken">Токен отмены</param>
     /// <returns>Список статей</returns>
     public IAsyncEnumerable<Article>? GetAllAsync(CancellationToken cancellationToken = default);
-    
+
     /// <summary>
     /// Получить статью по идентификатору
     /// </summary>
@@ -50,12 +50,13 @@ public interface IService
     /// <param name="cancellationToken">Токен отмены</param>
     /// <returns>Статья</returns>
     public Task<Article?> GetByAsync(Guid id, CancellationToken cancellationToken = default);
-    
+
     /// <summary>
     /// Получить статьи по тегам
     /// </summary>
     /// <param name="tags">Список тегов</param>
     /// <param name="cancellationToken">Токен отмены</param>
     /// <returns>Список статей</returns>
-    public IAsyncEnumerable<Article>? GetByAsync(IEnumerable<string> tags, CancellationToken cancellationToken = default);
+    public IAsyncEnumerable<Article>? GetByAsync(IEnumerable<string> tags,
+        CancellationToken cancellationToken = default);
 }

@@ -7,7 +7,7 @@ namespace KnowledgeBase.Desktop.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    public ObservableCollection<PagesItem> Pages { get; } = 
+    public ObservableCollection<PagesItem> Pages { get; } =
     [
         new()
         {
@@ -15,7 +15,7 @@ public class MainWindowViewModel : ViewModelBase
             Icon = Application.Current?.Resources["Book_Regular"] as StreamGeometry
         }
     ];
-    
+
     [Reactive] public PageViewModelBase ActivePageViewModel { get; set; }
 
     public MainWindowViewModel()

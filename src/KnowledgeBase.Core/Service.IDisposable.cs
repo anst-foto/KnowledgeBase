@@ -19,7 +19,7 @@ public partial class Service : IDisposable
     /// <summary>
     /// Освобождение ресурсов объекта.
     /// </summary>
-    /// <param name="disposing"></param>
+    /// <param name="disposing">Вызывается ли метод вручную (true) или автоматически (false).</param>
     protected virtual void Dispose(bool disposing)
     {
         _client.Dispose();

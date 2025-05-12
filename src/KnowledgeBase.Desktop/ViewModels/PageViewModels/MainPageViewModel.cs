@@ -9,15 +9,15 @@ namespace KnowledgeBase.Desktop.ViewModels;
 public class MainPageViewModel : PageViewModelBase
 {
     public ObservableCollection<Article> Articles { get; } = [];
-    public ReactiveCommand<Unit, Unit> OpenCommand {get;}
-    
+    public ReactiveCommand<Unit, Unit> OpenCommand { get; }
+
     public MainPageViewModel()
     {
         Title = "База знаний";
 
-        var article = new Article()
+        var article = new Article
         {
-            Id = Guid.NewGuid(),//BUG Решить какой тип данных использовать для уникального идентификатора
+            Id = Guid.NewGuid(), //BUG Решить какой тип данных использовать для уникального идентификатора
             Title = "Статья 1",
             Content = "Контент статьи 1"
         };
@@ -25,7 +25,7 @@ public class MainPageViewModel : PageViewModelBase
         article.Tags.Add("тег 2");
         Articles.Add(article);
         Articles.Add(article);
-        
-        OpenCommand = ReactiveCommand.Create(() => {});
+
+        OpenCommand = ReactiveCommand.Create(() => { });
     }
 }

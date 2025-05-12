@@ -7,5 +7,4 @@ namespace Avalonia.Extension;
 /// </summary>
 public class Component : UserControl
 {
-    
 }

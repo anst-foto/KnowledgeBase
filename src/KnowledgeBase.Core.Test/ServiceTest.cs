@@ -5,20 +5,19 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
+using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-
 using Xunit;
-
 using KnowledgeBase.Model;
 
 
 namespace KnowledgeBase.Core.Test;
 
+//FIXME Переделать тесты
 public class ServiceTest
 {
     private readonly IService _service;
-    
+
     private readonly Article _article;
 
     public ServiceTest()
@@ -31,49 +30,51 @@ public class ServiceTest
         var connectionString = config.GetConnectionString("DefaultConnection");
         var databaseName = config.GetConnectionString("DatabaseName");
         var collectionName = config.GetConnectionString("CollectionName");
-        
+
         _service = new Service(new ConnectConfig(connectionString, databaseName, collectionName));
-        
-        _article = new Article()
+
+        _article = new Article
         {
             Title = "MongoDB",
             Content = "MongoDB is a document database",
-            DateOfCreation = new DateTime(year: 2025, month: 3, day: 17, hour: 12, minute: 30, second: 30, DateTimeKind.Utc),
-            DateOfLastUpdate = new DateTime(year: 2025, month: 3, day: 17, hour: 12, minute: 30, second: 30, DateTimeKind.Utc)
+            DateOfCreation = new DateTime(2025, 3, 17, 12, 30, 30, DateTimeKind.Utc),
+            DateOfLastUpdate = new DateTime(2025, 3, 17, 12, 30, 30, DateTimeKind.Utc)
         };
         _article.Tags.Add("mongodb");
         _article.Tags.Add("database");
         _article.Tags.Add("NoSQL");
     }
-    
+
     [Fact]
     public void GetAllTest()
     {
         var expectedArticles = new List<Article> { _article };
-        
-        var actualArticles = _service.GetAll().ToList();
-        
+
+        var actualArticles = _service.GetAllAsync();
+
         Assert.Multiple(
+            () => Assert.NotNull(actualArticles),
             () => Assert.NotEmpty(actualArticles),
             () => Assert.Equal(expectedArticles, actualArticles));
     }
 
     [Fact]
-    public void GetByIdTest()
+    public async Task GetByIdTest()
     {
-        var actualArticle = _service.GetBy(new Guid("67d854d78fd13a37e0cff708")); //FIXME Уйти от магических чисел
+        var actualArticle =
+            await _service.GetByAsync(new Guid("67d854d78fd13a37e0cff708")); //FIXME Уйти от магических чисел
         Assert.Multiple(
             () => Assert.NotNull(actualArticle),
             () => Assert.Equal(_article, actualArticle));
     }
 
     [Fact]
-    public void CreateTest()
+    public async Task CreateTest()
     {
-        _service.Create(_article);
-        var actualArticles = _service.GetAll();
-        Assert.Equal(2, actualArticles.Count()); //FIXME Уйти от магических чисел
-        
-        _service.Delete(actualArticles.Last().Id);
+        await _service.CreateAsync(_article);
+        var actualArticles = _service.GetAllAsync();
+        Assert.Equal(2, actualArticles.ToBlockingEnumerable().Count()); //FIXME Уйти от магических чисел
+
+        //_service.DeleteAsync(actualArticles);
     }
 }

@@ -32,6 +32,7 @@ public interface IService
 ![diagram_class-0.png](doc/diagram_class-0.png)
 
 ## WebAPI
+
 ```csharp
 const string BASE_URL = "/api/v0";
 

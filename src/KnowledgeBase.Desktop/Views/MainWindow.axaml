@@ -1,23 +1,23 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:KnowledgeBase.Desktop.ViewModels"
-        
+
         x:Class="KnowledgeBase.Desktop.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        
+
         Icon="/Assets/avalonia-logo.ico"
         Title="KnowledgeBase.Desktop">
 
     <Window.DataContext>
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Window.DataContext>
-    
+
     <Window.Resources>
         <DataTemplate x:Key="TemplatePages"
                       x:DataType="{x:Type vm:PagesItem}">
             <StackPanel Orientation="Horizontal">
-                <PathIcon Data="{Binding Icon}"/>
-                <TextBlock Text="{Binding Title}"/>
+                <PathIcon Data="{Binding Icon}" />
+                <TextBlock Text="{Binding Title}" />
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
@@ -33,26 +33,26 @@
                     <Panel>
                         <PathIcon Data="{StaticResource Pane_Open_Regular}"
                                   IsVisible="{Binding RelativeSource={RelativeSource AncestorType={x:Type ToggleButton}}, 
-                                                                        Path=IsChecked}"/>
+                                                                        Path=IsChecked}" />
                         <PathIcon Data="{StaticResource Pane_Close_Regular}"
                                   IsVisible="{Binding RelativeSource={RelativeSource AncestorType={x:Type ToggleButton}}, 
-                                                                        Path=!IsChecked}"/>
+                                                                        Path=!IsChecked}" />
                     </Panel>
                 </ToggleButton>
-                
+
                 <ListBox ItemsSource="{Binding Pages}"
                          SelectionMode="Single"
                          SelectedItem="{Binding ActivePageViewModel}"
-                         ItemTemplate="{StaticResource TemplatePages}"/>
+                         ItemTemplate="{StaticResource TemplatePages}" />
             </DockPanel>
         </SplitView.Pane>
-        
+
         <SplitView.Content>
             <DockPanel LastChildFill="True">
                 <TextBlock Text="{Binding ActivePageViewModel.Title}"
-                           DockPanel.Dock="Top"/>
-                
-                <ContentControl Content="{Binding ActivePageViewModel}"/>
+                           DockPanel.Dock="Top" />
+
+                <ContentControl Content="{Binding ActivePageViewModel}" />
             </DockPanel>
         </SplitView.Content>
     </SplitView>

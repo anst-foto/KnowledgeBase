@@ -9,11 +9,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\KnowledgeBase.Model\KnowledgeBase.Model.csproj" />
+        <ProjectReference Include="..\KnowledgeBase.Model\KnowledgeBase.Model.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="MongoDB.Driver" Version="3.*" />
+        <PackageReference Include="MongoDB.Driver" Version="3.*"/>
     </ItemGroup>
 
 </Project>

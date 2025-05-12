@@ -22,11 +22,11 @@ public partial class Article : IEquatable<Article>
     {
         if (other is null) return false;
         if (ReferenceEquals(this, other)) return true;
-        return Title == other.Title 
+        return Title == other.Title
                && Tags.OrderBy(t => t).SequenceEqual(other.Tags.OrderBy(t => t))
                && Content == other.Content
-               && DateOfCreation.Equals(other.DateOfCreation) 
-               && DateOfLastUpdate.Equals(other.DateOfLastUpdate) 
+               && DateOfCreation.Equals(other.DateOfCreation)
+               && DateOfLastUpdate.Equals(other.DateOfLastUpdate)
                && IsDeleted == other.IsDeleted;
     }
 
@@ -62,7 +62,7 @@ public partial class Article : IEquatable<Article>
     {
         return Equals(left, right);
     }
-    
+
     /// <summary>
     /// Сравнение объектов класса Article на неравенство
     /// </summary>
