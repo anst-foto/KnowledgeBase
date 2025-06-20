@@ -5,11 +5,15 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "outhers", "outhers", "{D5A8A1A5-2339-43BA-9A0F-EE46FFC2E801}"
 	ProjectSection(SolutionItems) = preProject
+	    ..\README.md = ..\README.md
+	    
 		..\.gitignore = ..\.gitignore
-		..\README.md = ..\README.md
+		.dockerignore = .dockerignore
+		
 		..\.github\workflows\SonarQube.yml = ..\.github\workflows\SonarQube.yml
 		compose.yaml = compose.yaml
-		.dockerignore = .dockerignore
+		
+		..\.editorconfig = ..\.editorconfig
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{7CE33A0D-53A6-4634-9D18-F6831A2901C5}"
