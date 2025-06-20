@@ -1,0 +1,28 @@
+{
+  "name": "knowledge-base_web-client",
+  "version": "1.0.0",
+  "description": "Web-клиент для работы с базой знаний",
+  "main": "index.html",
+  "scripts": {
+    "view": "explorer index.html",
+    "dev": "npx tailwindcss -i ./template.css -o ./styles.css",
+    "dev:watch": "npx tailwindcss -i ./template.css -o ./styles.css --watch",
+    "lint": "eslint",
+    "lint:debug": "eslint --debug",
+    "lint:fix": "eslint --fix",
+    "format": "prettier --write ./"
+  },
+  "private": true,
+  "devDependencies": {
+    "@eslint/css": "^0.9.0",
+    "@eslint/js": "^9.29.0",
+    "@eslint/json": "^0.12.0",
+    "eslint": "^9.29.0",
+    "eslint-plugin-prettier": "^5.5.0",
+    "eslint-plugin-tailwindcss": "^3.18.0",
+    "globals": "^16.2.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.13",
+    "tailwindcss": "^3.4.17"
+  }
+}
