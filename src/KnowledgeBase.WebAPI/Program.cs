@@ -19,6 +19,8 @@ builder.Services.AddSingleton<IService>(new Service(new ConnectConfig(connection
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.AddCors(options => options.AddDefaultPolicy(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+
 var app = builder.Build();
 app.UseHttpsRedirection();
 
@@ -28,6 +30,8 @@ if (app.Environment.IsDevelopment())
 
     app.UseSwaggerUI(options => { options.SwaggerEndpoint("/openapi/v1.json", "v1"); });
 }
+
+app.UseCors();
 
 const string baseUrl = "/api/v1";
 
