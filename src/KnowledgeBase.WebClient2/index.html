@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>База знаний</title>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+<header class="container">
+  <div class="row">
+    <div class="col">
+      <h1>База знаний</h1>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="container">
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-outline-dark" type="button" onclick="loadArticles()">Загрузить</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="row" id="articles">
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="row">
+      <div class="col">
+        <form id="formInput">
+          <div class="mb-3">
+            <label for="title" class="form-label">Название</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+          </div>
+          <div class="mb-3">
+            <label for="content" class="form-label">Содержимое статьи</label>
+            <textarea class="form-control" id="content" rows="3"></textarea>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="js/index.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
